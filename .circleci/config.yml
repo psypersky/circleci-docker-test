@@ -40,55 +40,6 @@ jobs:
                 name: Install Virtualenv
                 command: pip install --no-input virtualenv
 
-
-
-#!/bin/bash
-
-IMAGE_NAME=tu-proxy-builder
-
-echo "[+] Deleting tu-proxy-dev folder"
-rm -fr ./lambda-dev
-
-echo "[+] Coping lambda files to lamda-dev folder"
-rsync -a ./lambda/ ./lambda-dev
-
-echo "[+] Booting up Amazon Linux Docker Machine"
-rep=$(curl -s --unix-socket /var/run/docker.sock http://ping > /dev/null)
-status=$?
-
-if [ "$status" == "7" ]
-then
-	echo "[+] Docker is not connected, please start it up first!"
-	exit 1
-fi
-
-# Check if docker machine exists
-#EXISTS=$(docker ps -a | grep "${MACHINE_NAME}")
-
-#if [ "$EXISTS" ]; then
-	# Start Machine
-#	echo "Machine exitst, startint it up..."
-	# Run a new machine and install the stuff
-#	docker start "${MACHINE_NAME}"
-#	else
-#	echo "Running a fresh machine..."
-#	docker build -t tu-proxy-builder --no-cache .
-
-if [ "$(docker image ls | grep ${IMAGE_NAME})" ];then
-	echo "Docker image exists :)"
-else
-	echo "Docker image does not exist, building image..."
-	docker build -t ${IMAGE_NAME} --no-cache .
-fi
-
-docker run \
-	--mount type=bind,source="$(pwd)/lambda-dev",target=/builder/lambda-dev \
-	${IMAGE_NAME}
-#fi
-
-# SSH into the machine
-# Run script to install the python libraries with binded
-
             # - save_cache:
             #     paths:
             #     - ./venv
