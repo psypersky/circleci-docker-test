@@ -29,6 +29,26 @@ jobs:
                 name: Echo ls
                 command: echo $(ls)
 
+            - run:
+                name: Copy lambda to temp folder
+                command: rsync -a ./lambda/ ./lambda-build
+
+            - run:
+                name: Set virtualenv
+                command: virtualenv --no-site-packages lambda-build
+
+            - run:
+                name: Enter in lambda build
+                command: cd lambda-build
+
+            - run:
+                name: Activate virtual env
+                command: return source bin/activate
+
+            - run:
+                name: Install piton libraries
+                command: pip install -r requirements.txt -t .
+
             # Download and cache dependencies
             # - restore_cache:
             #     keys:
