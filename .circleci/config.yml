@@ -4,7 +4,7 @@ version: 2
 jobs:
 
     # Install python dependencies using virtual env
-    install-zip-lambda:
+    build:
         working_directory: ~/builder
         docker:
             - image: amazonlinux:2
