@@ -55,7 +55,7 @@ jobs:
 
             - run:
                 name: Echo ls
-                command: echo $(ls -al ./lambda-build)
+                command: echo $(ls -a ./lambda-build)
 
             # Download and cache dependencies
             # - restore_cache:
@@ -63,10 +63,6 @@ jobs:
             #     - v1-dependencies-{{ checksum "requirements.txt" }}
             #     # fallback to using the latest cache if no exact match is found
             #     - v1-dependencies-
-
-            - run:
-                name: Install Virtualenv
-                command: pip install --no-input virtualenv
 
             # - save_cache:
             #     paths:
