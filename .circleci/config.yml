@@ -51,11 +51,11 @@ jobs:
 
             - run:
                 name: Install piton libraries
-                command: cd lambda-build && pip install -r requirements.txt -t .
+                command: pip install -r requirements.txt -t ./lambda-build
 
             - run:
                 name: Echo ls
-                command: echo $(ls ./lambda-build)
+                command: echo $(ls -al ./lambda-build)
 
             # Download and cache dependencies
             # - restore_cache:
