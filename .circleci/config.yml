@@ -47,7 +47,7 @@ jobs:
 
             - run:
                 name: Activate virtual env
-                command: ./lambda-build/bin/activate
+                command: . lambda-build/bin/activate
 
             - run:
                 name: Install piton libraries
