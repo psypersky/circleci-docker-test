@@ -31,7 +31,7 @@ jobs:
 
             - run:
                 name: Copy lambda to temp folder
-                command: rsync -a ./lambda/ ./lambda-build
+                command: cp -R ./lambda/ ./lambda-build
 
             - run:
                 name: Set virtualenv
