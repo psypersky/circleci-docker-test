@@ -51,7 +51,7 @@ jobs:
 
             - run:
                 name: Install piton libraries
-                command: pip install -r requirements.txt -t ./lambda-build
+                command: pip install -r ./lambda-build/requirements.txt -t ./lambda-build
 
             - run:
                 name: Echo ls
