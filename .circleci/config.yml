@@ -26,6 +26,10 @@ jobs:
                 command: yum install -y python2-pip
 
             - run:
+                name: Install virtual env
+                command: pip install --no-input virtualenv
+
+            - run:
                 name: Echo ls
                 command: echo $(ls)
 
