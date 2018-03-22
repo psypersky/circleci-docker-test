@@ -57,6 +57,15 @@ jobs:
                 name: Echo ls
                 command: echo $(ls -a ./lambda-build)
 
+            - run:
+                name: Zip lambda build
+                command: zip -r lambda-build.zip lambda-build
+
+            - run:
+                name: Echo ls
+                command: echo $(ls -a .)
+
+
             # Download and cache dependencies
             # - restore_cache:
             #     keys:
