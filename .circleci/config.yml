@@ -23,7 +23,7 @@ jobs:
 
             - run:
                 name: Install python
-                command: yum install -y python2-pip
+                command: yum install -y python2-pip zip
 
             - run:
                 name: Install virtual env
