@@ -46,6 +46,10 @@ jobs:
                 command: cd lambda-build
 
             - run:
+                name: Echo ls
+                command: echo $(ls)
+
+            - run:
                 name: Activate virtual env
                 command: return source bin/activate
 
